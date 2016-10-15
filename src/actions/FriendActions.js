@@ -7,7 +7,9 @@ const FriendActions = {
   deleteFavorite: API.deleteFavorite,
   initializeFavorites: API.initializeFavorites,
   getBusiness: API.getBusiness,
-  startStream: API.startStream
+  startStream: API.startStream,
+  openSocket: API.openSocket,
+  closeSocket: API.closeSocket
 };
 
 export default FriendActions;

@@ -14,6 +14,14 @@ class FriendStore extends EventEmitter {
 
     AppDispatcher.register((action) => {
       switch (action.type) {
+        case 'MESSAGE_ANALYSIS':
+          console.log('STORE MESSAGE_ANALYSIS', action.payload.data);
+          this.emit('CHANGE');
+          break;
+        case 'PICTURE_ANALYSIS':
+          console.log('STORE PICTURE_ANALYSIS: ', action.payload.data);
+          this.emit('CHANGE');
+          break;
         case 'RECEIVE_TWEETS':
           _tweets = action.payload.tweets;
           this.emit('CHANGE');

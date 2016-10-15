@@ -1,12 +1,7 @@
 import ServerActions from './actions/ServerActions';
 import axios from 'axios';
 const io = require('socket.io-client')
-
-var socket = io.connect('http://localhost:8000');
-socket.on('watson', function(data) {
-  console.log(data);
-  //  ServerActions.recieveStream(data);
-});
+let socket;
 
 const API = {
   initializeFavorites () {
@@ -20,9 +15,24 @@ const API = {
       });
   },
 
+  openSocket () {
+    socket = io.connect('http://localhost:8000');
+    socket.on('watson', function (data) {
+      // console.log('WATSON:', data);
+      ServerActions.receiveMsgAnalysis(data);
+    });
+
+    socket.on('microsoft', function(data) {
+      // console.log('MICROSOFT:', data);
+      ServerActions.receivePicAnalysis(data);
+    });
+  },
+
+  closeSocket () {
+    socket.disconnect();
+  },
+
   search (pics, msgs) {
-
-
     axios.post(`http://localhost:8000/api/search`,{pics, msgs})
       .then((res) => {
         console.log('API SEARCH:', res.data);

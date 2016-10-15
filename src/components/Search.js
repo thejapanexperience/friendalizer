@@ -20,7 +20,13 @@ export default class Search extends Component {
     this.repopulate = this.repopulate.bind(this);
   }
 
+  componentWillMount () {
+    FriendActions.openSocket();
+  }
 
+  componentWillUnmount () {
+    FriendActions.closeSocket();
+  }
 
   repopulate () {
     let pics = [];
