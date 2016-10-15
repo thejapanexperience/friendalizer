@@ -1,5 +1,12 @@
 import ServerActions from './actions/ServerActions';
 import axios from 'axios';
+const io = require('socket.io-client')
+
+var socket = io.connect('http://localhost:8000');
+socket.on('watson', function(data) {
+  console.log(data);
+  //  ServerActions.recieveStream(data);
+});
 
 const API = {
   initializeFavorites () {
@@ -13,11 +20,12 @@ const API = {
       });
   },
 
-  search (term) {
-    axios.get(`http://localhost:8000/search?term=${encodeURI(term)}`)
+  search (pics, msgs) {
+
+
+    axios.post(`http://localhost:8000/api/search`,{pics, msgs})
       .then((res) => {
         console.log('API SEARCH:', res.data);
-        ServerActions.recieveSearch(res.data);
       })
       .catch((err) => {
         console.error('SEARCH:', err);

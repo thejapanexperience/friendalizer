@@ -3,14 +3,21 @@ const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+let socketEmitter;
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackConfig = require('./webpack.config');
 
 const app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+io.on('connection', (socket) => {
+  console.log('SOCKET ON');
+  socketEmitter = (type, data) => socket.emit(type, data);
+});
 const PORT = process.env.PORT || 8000;
+server.listen(PORT);
 
 // 3RD PARTY MIDDLEWARE
 app.use(morgan('combined'));
@@ -20,6 +27,12 @@ app.use(cors());
 
 // GENERAL MIDDLEWARE
 app.use(express.static('build'));
+app.use((req, res, next) => {
+ res.socketEmitter = socketEmitter;
+ next();
+});
+
+
 
 // WEBPACK CONFIG
 const compiler = webpack(webpackConfig);
@@ -47,6 +60,6 @@ app.use('*', (req, res) => {
 });
 
 // SERVER LISTEN
-app.listen(PORT, (err) => {
-  console.log(err || `Express listening on port ${PORT}`);
-});
+// app.listen(PORT, (err) => {
+//   console.log(err || `Express listening on port ${PORT}`);
+// });

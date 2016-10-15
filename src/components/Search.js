@@ -87,6 +87,7 @@ export default class Search extends Component {
       msgs.push(this.refs[`msg${index}`].value);
     });
 
+    FriendActions.search(pics, msgs)
 
   }
 

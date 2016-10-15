@@ -3,8 +3,8 @@ const router = express.Router();
 
 const search = require('../models/search');
 
-router.get('/', (req, res) => {
-  search.getSearch(res.hasError, req.query);
+router.post('/', (req, res) => {
+  search.getSearch(res.hasError, req, res);
 });
 
 router.get('/live', (req, res) => {
