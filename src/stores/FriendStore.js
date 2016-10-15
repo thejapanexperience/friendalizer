@@ -3,6 +3,8 @@ import moment from 'moment';
 import AppDispatcher from '../AppDispatcher';
 
 let _tweets = [];
+let _queryCount = 0;
+let _imgCount = 0;
 let _favorites = [];
 let _business = null;
 let _stream = [];
@@ -28,6 +30,7 @@ class FriendStore extends EventEmitter {
             _totals[4][1]+= Number(msg.docEmotions.sadness)
           })
           console.log('_totals: ', _totals)
+          _queryCount++;
           this.emit('CHANGE');
           break;
         case 'PICTURE_ANALYSIS':
@@ -44,6 +47,8 @@ class FriendStore extends EventEmitter {
             _totals[5][1]+= Number(pic[0].scores.surprise)
           })
           console.log('_totals: ', _totals)
+          _queryCount++;
+          _imgCount++;
           this.emit('CHANGE');
           break;
         case 'RECEIVE_TWEETS':
@@ -110,6 +115,17 @@ class FriendStore extends EventEmitter {
   }
   getEntities () {
     return _entities;
+  }
+
+  getCounts () {
+    return {
+      query: _queryCount,
+      pics: _imgCount
+    };
+  }
+
+  getTotals () {
+    return _totals;
   }
 }
 

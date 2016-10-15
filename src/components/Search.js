@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
+import {Link} from 'react-router';
 
 import FriendStore from '../stores/FriendStore';
 import FriendActions from '../actions/FriendActions';
@@ -25,7 +26,7 @@ export default class Search extends Component {
   }
 
   componentWillUnmount () {
-    FriendActions.closeSocket();
+    // FriendActions.closeSocket();
   }
 
   repopulate () {
@@ -111,13 +112,13 @@ export default class Search extends Component {
             <div className="ui huge fluid buttons">
               <button onClick={this.clear} className="ui orange button">Cancel</button>
               <div className="or"></div>
-              <button onClick={this.submit} className="ui positive button">Save</button>
+              <Link onClick={this.submit} to='/results' className='ui positive button'>Analyze</Link>
             </div>
           </div>
           <div className="col-md-3"></div>
         </div>
-        <br />
         <div className="row">
+          <hr />
           <div className='col-md-4'>
             <h3>Add Pictures</h3>
             {pics.map((e, index) => (

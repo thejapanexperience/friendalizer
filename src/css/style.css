@@ -16,6 +16,10 @@ body {
   width:15em;
 }
 
+#card-img {
+  width: 30em;  
+}
+
 #background {
   background-image: url("http://i.imgur.com/RqUkE2P.jpg");
   background-color: white;

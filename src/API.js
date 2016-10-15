@@ -2,6 +2,7 @@ import ServerActions from './actions/ServerActions';
 import axios from 'axios';
 const io = require('socket.io-client')
 let socket;
+let untilClose;
 
 const API = {
   initializeFavorites () {
@@ -20,19 +21,27 @@ const API = {
     socket.on('watson', function (data) {
       // console.log('WATSON:', data);
       ServerActions.receiveMsgAnalysis(data);
+      untilClose--;
+      if (untilClose < 1) {
+        socket.disconnect();
+        console.log('SOCKET CLOSED');
+      }
     });
 
     socket.on('microsoft', function(data) {
       // console.log('MICROSOFT:', data);
       ServerActions.receivePicAnalysis(data);
+      untilClose--;
+      if (untilClose < 1) {
+        socket.disconnect();
+        console.log('SOCKET CLOSED');
+      }
     });
   },
 
-  closeSocket () {
-    socket.disconnect();
-  },
-
   search (pics, msgs) {
+    untilClose = pics.length + msgs.length;
+
     axios.post(`http://localhost:8000/api/search`,{pics, msgs})
       .then((res) => {
         console.log('API SEARCH:', res.data);
