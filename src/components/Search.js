@@ -126,7 +126,7 @@ export default class Search extends Component {
                   <button onClick={this.addPic} className="ui teal labled icon button">
                     <i className="plus icon"/>
                   </button>
-                  <input type="text" ref={`pic${index}`} placeholder="enter picture url"/>
+                  <input type="text" ref={`pic${index}`} defaultValue="http://inthesetimes.com/images/articles/trump_flicker_face_yess.jpg"/>
                 </div>
                 <br />
               </div>
@@ -141,7 +141,7 @@ export default class Search extends Component {
                   <button onClick={this.addMsg} className="ui teal labled icon button">
                     <i className="plus icon"/>
                   </button>
-                  <input type="text" ref={`msg${index}`} placeholder="enter message"/>
+                  <input type="text" ref={`msg${index}`} defaultValue="Trump’s talk of a rigged election already has some of his supporters publicly saying they won’t accept the result of Clinton wins the presidential election. If she’s in office, I hope we can start a coup. She should be in prison or shot. That’s how I feel about it, Dan Bowman, a Trump supporter, told The Boston Globe last week. We’re going to have a revolution and take them out of office if that’s what it takes. There’s going to be a lot of bloodshed. But that’s what it’s going to take. . . . I would do whatever I can for my country. Trump also claimed that the Republican primary process was rigged in April, when it looked like Sen. Ted Cruz (R-Texas) could gather enough primary delegates to challenge his nomination at the Republican National Convention. The brash businessman’s chances of winning the White House are dwindling. He trails Clinton by more than 7 points nationally, according to HuffPost Pollster, which aggregates publicly available polling data. HuffPost Pollster’s presidential forecast model gives him a meager 7.9 percent chance of winning the presidency. Editor’s note: Donald Trump regularly incites political violence and is a serial liar, rampant xenophobe, racist, misogynist and birther who has repeatedly pledged to ban all Muslims — 1.6 billion members of an entire religion — from entering the U.S."/>
                 </div>
                 <br />
               </div>
