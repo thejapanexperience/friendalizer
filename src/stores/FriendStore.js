@@ -9,9 +9,9 @@ let _favorites = [];
 let _business = null;
 let _stream = [];
 let _entities = [];
-let _msgs = []
-let _pictures = []
+let _name = ''
 let _totals =[['anger',0], ['disgust',0], ['fear',0], ['happiness',0], ['sadness',0], ['surprise',0]]
+let _pics = []
 
 class FriendStore extends EventEmitter {
   constructor () {
@@ -21,35 +21,51 @@ class FriendStore extends EventEmitter {
       switch (action.type) {
         case 'MESSAGE_ANALYSIS':
           console.log('STORE MESSAGE_ANALYSIS', action.payload.data);
-          _msgs.push(action.payload.data)
-          _msgs.forEach((msg,i) => {
-            _totals[0][1]+= Number(msg.docEmotions.anger)
-            _totals[1][1]+= Number(msg.docEmotions.disgust)
-            _totals[2][1]+= Number(msg.docEmotions.fear)
-            _totals[3][1]+= Number(msg.docEmotions.joy)
-            _totals[4][1]+= Number(msg.docEmotions.sadness)
-          })
+          let msg = action.payload.data
+            _totals[0][1] += Number(msg.docEmotions.anger)
+            console.log('_totals[0][1]:1 ',_totals[0][1] )
+            _totals[1][1] += Number(msg.docEmotions.disgust)
+            console.log('_totals[0][1]:2 ',_totals[0][1] )
+            _totals[2][1] += Number(msg.docEmotions.fear)
+            console.log('_totals[0][1]:3 ',_totals[0][1] )
+            _totals[3][1] += Number(msg.docEmotions.joy)
+            console.log('_totals[0][1]:4 ',_totals[0][1] )
+            _totals[4][1] += Number(msg.docEmotions.sadness)
+            console.log('_totals[0][1]:5 ',_totals[0][1] )
           console.log('_totals: ', _totals)
           _queryCount++;
           this.emit('CHANGE');
           break;
         case 'PICTURE_ANALYSIS':
           console.log('STORE PICTURE_ANALYSIS: ', action.payload.data);
-          _pictures.push(action.payload.data)
-          _pictures.forEach((pic,i) => {
-            _totals[0][1] += Number(pic[0].scores.anger)
-            _totals[0][1] += Number(pic[0].scores.contempt)
-            _totals[1][1] += Number(pic[0].scores.disgust)
-            _totals[2][1]+= Number(pic[0].scores.fear)
-            _totals[3][1]+= Number(pic[0].scores.happiness)
-            // _totals.neutral += Number(pic[0].scores.neutral)
-            _totals[4][1]+= Number(pic[0].scores.sadness)
-            _totals[5][1]+= Number(pic[0].scores.surprise)
-          })
+          let picture = (action.payload.data)
+            _totals[0][1] += Number(picture[0].scores.anger)
+            console.log('_totals[0][1]:6 ',_totals[0][1] )
+            _totals[0][1] += Number(picture[0].scores.contempt)
+            console.log('_totals[0][1]:7 ',_totals[0][1] )
+            _totals[1][1] += Number(picture[0].scores.disgust)
+            console.log('_totals[0][1]:8 ',_totals[0][1] )
+            _totals[2][1] += Number(picture[0].scores.fear)
+            console.log('_totals[0][1]:9 ',_totals[0][1] )
+            _totals[3][1] += Number(picture[0].scores.happiness)
+            console.log('_totals[0][1]:10 ',_totals[0][1] )
+            // _totals.neutral += Number(picture[0].scores.neutral)
+            _totals[4][1] += Number(picture[0].scores.sadness)
+            console.log('_totals[0][1]:11 ',_totals[0][1] )
+            _totals[5][1] += Number(picture[0].scores.surprise)
+            console.log('_totals[0][1]:12 ',_totals[0][1] )
           console.log('_totals: ', _totals)
           _queryCount++;
           _imgCount++;
           this.emit('CHANGE');
+          break;
+        case 'PICS':
+          _pics = action.payload.pics;
+          this.emit('CHANGE');
+          break;
+        case 'NAME':
+          _name = action.payload.name
+          this.emit('CHANGE')
           break;
         case 'RECEIVE_TWEETS':
           _tweets = action.payload.tweets;
@@ -124,8 +140,16 @@ class FriendStore extends EventEmitter {
     };
   }
 
+  getPics () {
+    return _pics;
+  }
+
   getTotals () {
     return _totals;
+  }
+
+  getName () {
+    return _name;
   }
 }
 

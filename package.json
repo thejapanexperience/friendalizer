@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apeman-react-album": "^3.0.2",
     "axios": "^0.14.0",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
@@ -35,6 +36,7 @@
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.5",
     "react-dom": "^15.3.2",
+    "react-image-gallery": "^0.7.2",
     "react-picture-show": "^1.4.0",
     "react-router": "^2.8.1",
     "react-slider": "^0.7.0",

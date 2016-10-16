@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import uuid from 'uuid';
 import { browserHistory, Link } from 'react-router';
 import { Progress, Label, Icon } from 'semantic-ui-react';
+import {ApAlbum, ApAlbumStyle} from 'apeman-react-album'
+import { ApSpinnerStyle } from 'apeman-react-spinner'
+import { ApImageStyle } from 'apeman-react-image'
 
 import FriendStore from '../stores/FriendStore';
 import FriendActions from '../actions/FriendActions';
@@ -11,7 +14,9 @@ export default class Results extends Component {
     super(props);
     this.state = {
       totals: FriendStore.getTotals(),
-      counts: {query: 1, pics: 1}
+      counts: {query: 1, pics: 1},
+      pics: FriendStore.getPics(),
+      name: FriendStore.getName()
     };
     this._onChange = this._onChange.bind(this);
   }
@@ -27,14 +32,20 @@ export default class Results extends Component {
   _onChange () {
     this.setState({
       totals: FriendStore.getTotals(),
-      counts: FriendStore.getCounts()
+      counts: FriendStore.getCounts(),
+      pics: FriendStore.getPics(),
+      name: FriendStore.getName()
     });
   }
 
   render () {
-    let {totals, counts} = this.state;
+    let {totals, counts, pics, name} = this.state;
     console.log('counts:', counts);
     console.log('totals: ', totals)
+    console.log('name: ', name)
+    console.log('totals[0][1]/counts.query*100: ', totals[0][1]/counts.query*100)
+    console.log('totals[0][1]: ', totals[0][1])
+    console.log('counts.query: ', counts.query)
 
     return (
       <div>
@@ -57,10 +68,19 @@ export default class Results extends Component {
           <div className="col-md-6">
             <div className="ui fluid card">
               <div>
-
+                <div id='album'>
+                  <ApSpinnerStyle />
+                  <ApImageStyle />
+                  <ApAlbumStyle />
+                  <ApAlbum
+                    width='555px'
+                    height='400px'
+                    // scale='fill'
+                    images={pics}/>
+                </div>
               </div>
               <div className="content">
-                <a className="header">Kristy</a>
+                <a className="header">{name}</a>
                 <div className="meta">
                   <span className="date">Joined in 2013</span>
                 </div>

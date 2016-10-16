@@ -2,6 +2,9 @@ html {
   max-width: 100%;
 }
 
+#beginAnalysis {
+  font-size: 100%
+}
 body {
   color: black;
   max-width: 100%;
@@ -16,8 +19,12 @@ body {
   width:15em;
 }
 
+#album {
+  position: relative;
+}
+
 #card-img {
-  width: 30em;  
+  width: 30em;
 }
 
 #background {
