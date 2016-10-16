@@ -73,6 +73,14 @@ const API = {
       });
   },
 
+  sendMail(address, data) {
+    console.log('address: ', address)
+    axios.post('http://localhost:8000/mail',{
+      to: address,
+      data: data,
+    })
+  },
+
   getBusiness (id) {
     axios.get(`http://localhost:8000/business?id=${id}`)
       .then((res) => {

@@ -3,11 +3,34 @@ html {
 }
 
 #beginAnalysis {
-  font-size: 100%
+  font-size: 100%;
+  align-items: right;
 }
 body {
   color: black;
   max-width: 100%;
+  background-color: hsla(53, 100%, 26%, 0.08);
+}
+
+.introText {
+  color: black;
+  /*font-family: 'Fredericka the Great', cursive;*/
+  /*font-family: 'Bungee Inline', cursive;*/
+  font-family: 'Sintony', sans-serif;
+  font-size: 400%;
+  text-align: right;
+}
+/*.ui.card>.content, .ui.cards>.card>.content {
+    background-color: #fbc014;
+}
+.ui.card>.content>.header, .ui.cards>.card>.content>.header {
+    color: rgb(255, 255, 255);
+}*/
+
+.inverted {
+  color: white !important;
+  font-size: 188% !important;
+  background-color: #fbc014 !important
 }
 
 .tweet-text {
@@ -27,8 +50,8 @@ body {
 }
 
 .favorite-album {
-  height: 250px;
-  overflow: hidden;
+  height: 230px;
+  /*overflow: hidden;*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,9 +70,9 @@ body {
 }
 
 #background {
-  background-image: url("http://i.imgur.com/RqUkE2P.jpg");
-  background-color: white;
-  background-size: cover;
+  /*background-image: url("http://i.imgur.com/RqUkE2P.jpg");*/
+  /*background-color: #00466b;*/
+  /*background-size: cover;
   display: block;
   -webkit-filter: opacity(50%) blur(0px);
   filter: opacity(50%) blur(0px);
@@ -59,7 +82,7 @@ body {
   top: -200px;
   position: fixed;
   right: 0;
-  z-index: 1;
+  z-index: 1;*/
 }
 
 .btn-danger {
@@ -67,13 +90,18 @@ body {
 }
 
 #page-title {
-  /*text-align: center;*/
-  color: #f7fdff;
+  text-align: left;
+  /*color: #f7fdff;*/
+  /*color: #5bc0de;*/
+  color: black;
   text-shadow: -2.3px 0 .3px #000000,0 1.2px .3px #000000,1.2px 0 .3px #000000,0 -2.3px .3px #000000;
-  font-size: 48pt;
-  font-weight: bold;
+  font-size: 100pt;
+  /*font-weight: bold;*/
   width: 100%;
-  font-family: 'Bangers', cursive;
+  /*font-family: 'Bangers', cursive;*/
+  /*font-family: 'Nosifer', cursive;*/
+  /*font-family: 'Fredericka the Great', cursive;*/
+  font-family: 'Sintony', sans-serif;
 }
 
 /*.nav-tabs > li > a {

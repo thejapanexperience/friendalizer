@@ -14,6 +14,7 @@ export default class Favorites extends Component {
     };
     this._onChange = this._onChange.bind(this);
     this.delete = this.delete.bind(this);
+    this.sendMail = this.sendMail.bind(this);
   }
 
   componentWillMount () {
@@ -28,6 +29,14 @@ export default class Favorites extends Component {
     this.setState({
       favorites: FriendStore.getFavorites()
     });
+  }
+
+  sendMail(id, data){
+    console.log('sending email')
+    console.log('id: ', id)
+    let address = this.refs[id].value
+    console.log('address: ', address)
+    FriendActions.sendMail(address, data)
   }
 
   delete (id) {
@@ -47,6 +56,7 @@ export default class Favorites extends Component {
               <br />
               <div className="ui fluid card">
                 <div className='image favorite-album'>
+
                   <div onClick={() => this.delete(favorite.id)} className="ui red ribbon label delete">
                     <i className="trash icon"></i>Delete
                   </div>
@@ -79,6 +89,14 @@ export default class Favorites extends Component {
                     <div>
                       <Progress percent={favorite.totals[4][1]/favorite.counts.query*100} indicating color='blue'/>
                     </div>
+                    <div className="ui action fluid input">
+                      <input type="text" ref={favorite.id} defaultValue="friend@email.com"/>
+                      <button className="ui teal right labeled icon button" onClick={() => this.sendMail(favorite.id, favorite)}>
+                        <i className="mail icon"></i>
+                        Mail
+                      </button>
+                    </div>
+
                   </div>
                 </div>
               </div>

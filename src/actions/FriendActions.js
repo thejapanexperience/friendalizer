@@ -26,7 +26,8 @@ const FriendActions = {
   getBusiness: API.getBusiness,
   startStream: API.startStream,
   openSocket: API.openSocket,
-  closeSocket: API.closeSocket
+  closeSocket: API.closeSocket,
+  sendMail:API.sendMail
 };
 
 export default FriendActions;

@@ -77,7 +77,7 @@ export default class Results extends Component {
         <br />
         <div className="row">
           <div className="col-md-3">
-            <h1>Victim Analysis</h1>
+            <h1>Friend Analysis</h1>
           </div>
           <div className="col-md-5">
             <div className="ui huge fluid buttons">
@@ -104,21 +104,12 @@ export default class Results extends Component {
                     images={pics}/>
                 </div>
               </div>
-              <div className="content">
-                <a className="header">{name}</a>
-                <div className="meta">
-                  <span className="date">Joined in 2013</span>
-                </div>
-                <div className="description">
-                  Kristy is an art director living in New York.
-                </div>
+              <div className="ui inverted content">
+                <h1 className="ui huge white inverted header" >{name}</h1>
+
+
               </div>
-              <div className="extra content">
-                <a>
-                  <i className="user icon"></i>
-                  22 Friends
-                </a>
-              </div>
+
             </div>
           </div>
           <div className="col-md-6">

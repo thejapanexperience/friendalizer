@@ -21,20 +21,23 @@ export default class Landing extends Component {
       <div>
         <div className="row">
           <br />
-          <h3 className='text-center'>Are your friends really your friends?</h3>
-          <h2 className='text-center'>Are you sure you want friends like yours?</h2>
-          <h1 className='text-center'>Are your friends worth keeping?</h1>
+          <h2 className='introText text-center'>Are you sure you want friends like yours?</h2>
+          <h3 className='introText text-center'>Are your friends really your friends?</h3>
+          <h1 className='introText text-center'>Are your friends worth keeping?</h1>
+          <h1 className='introText text-center'>Scared to find out?</h1>
         </div>
         <br />
-        <div className="row text-center">
+        <div className="row text-right">
           <div className="ui action huge input">
             <input type="text" ref="name" placeholder="Donald"/>
-            <Link id="beginAnalysis" to='/search' onClick={this.addName} className="ui teal right labeled icon button">
+            <Link id="beginAnalysis" to='/search' onClick={this.addName} className="ui red right labeled icon button">
               <i className="smile icon"></i>
               Begin Analysis
             </Link>
+            <br/>
           </div>
         </div>
+        <br/><br/><img src="http://embassie.com/wp-content/themes/embassie_hostel/images/silhouettes.png" alt=""/>
       </div>
     );
   }
