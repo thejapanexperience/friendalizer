@@ -1,14 +1,12 @@
 import {EventEmitter} from 'events';
 import moment from 'moment';
 import AppDispatcher from '../AppDispatcher';
+import FriendActions from '../actions/FriendActions';
 
-let _tweets = [];
+FriendActions.initializeFavorites();
 let _queryCount = 0;
 let _imgCount = 0;
 let _favorites = [];
-let _business = null;
-let _stream = [];
-let _entities = [];
 let _name = ''
 let _totals =[['anger',0], ['disgust',0], ['fear',0], ['happiness',0], ['sadness',0], ['surprise',0]]
 let _pics = []
@@ -67,36 +65,16 @@ class FriendStore extends EventEmitter {
           _name = action.payload.name
           this.emit('CHANGE')
           break;
-        case 'RECEIVE_TWEETS':
-          _tweets = action.payload.tweets;
-          this.emit('CHANGE');
-          break;
         case 'UPDATE_FAVORITES':
           _favorites = action.payload.favorites;
           this.emit('CHANGE');
           break;
-        case 'RECEIVE_BUSINESS':
-          _business = action.payload.business;
-          this.emit('CHANGE');
-          break;
-        case 'RECEIVE_STREAM':
-          if (_stream.length > 100) {
-            _stream.pop();
-          }
-          _stream.unshift(action.payload.data);
-          this.emit('CHANGE');
-          break;
-        case 'RECEIVE_ENTITIES':
-          const relevant = action.payload.data.filter((entity) =>
-            entity.count > 1 || parseFloat(entity.relevance) >= 0.5
-          );
-
-          if (relevant.length > 0) {
-            _entities.unshift({
-              relevant,
-              timestamp: moment().format('MMMM Do YYYY, h:mm:ss a')
-            });
-          }
+        case 'CLEAR_STORE':
+          _queryCount = 0;
+          _imgCount = 0;
+          _name = ''
+          _totals =[['anger',0], ['disgust',0], ['fear',0], ['happiness',0], ['sadness',0], ['surprise',0]]
+          _pics = []
           this.emit('CHANGE');
           break;
         default:
@@ -114,23 +92,8 @@ class FriendStore extends EventEmitter {
     this.removeListener('CHANGE', callback);
   }
 
-  getBusinesses () {
-    return _tweets;
-  }
-
-  getBusiness () {
-    return _business;
-  }
-
   getFavorites () {
     return _favorites;
-  }
-
-  getStream () {
-    return _stream;
-  }
-  getEntities () {
-    return _entities;
   }
 
   getCounts () {

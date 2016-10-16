@@ -15,7 +15,12 @@ const FriendActions = {
       payload: {name}
     })
   },
-  addFavorite: API.postFavorite,
+  clearStore () {
+    AppDispatcher.dispatch({
+      type: 'CLEAR_STORE'
+    });
+  },
+  postFavorite: API.postFavorite,
   deleteFavorite: API.deleteFavorite,
   initializeFavorites: API.initializeFavorites,
   getBusiness: API.getBusiness,

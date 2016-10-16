@@ -6,6 +6,7 @@ import {ApAlbum, ApAlbumStyle} from 'apeman-react-album'
 import { ApSpinnerStyle } from 'apeman-react-spinner'
 import { ApImageStyle } from 'apeman-react-image'
 
+
 import FriendStore from '../stores/FriendStore';
 import FriendActions from '../actions/FriendActions';
 
@@ -19,6 +20,8 @@ export default class Results extends Component {
       name: FriendStore.getName()
     };
     this._onChange = this._onChange.bind(this);
+    this.close = this.close.bind(this);
+    this.postFavorite = this.postFavorite.bind(this);
   }
 
   componentWillMount () {
@@ -38,6 +41,28 @@ export default class Results extends Component {
     });
   }
 
+  close () {
+    FriendActions.clearStore()
+  }
+
+  postFavorite () {
+    let {totals, counts, pics, name} = this.state;
+    FriendActions.postFavorite({totals, counts, pics, name, id: uuid()});
+    FriendActions.clearStore();
+  }
+
+  // capture () {
+  //   console.log('CAPTURE');
+  //   printscreen('http://localhost:8000/results', {}, (err, data) => {
+  //
+  //     require('fs').stat(data.file, (err, stats) =>
+  //     console.log(`
+  //       - There are ${data.output.divs} divs in this page.
+  //       - Your screenshot is available at ${data.file} and is ${stats.size} bytes.
+  //     `));
+  //   });
+  // }
+
   render () {
     let {totals, counts, pics, name} = this.state;
     console.log('counts:', counts);
@@ -56,9 +81,9 @@ export default class Results extends Component {
           </div>
           <div className="col-md-5">
             <div className="ui huge fluid buttons">
-              <button className="ui orange button">Close</button>
+              <Link to='/' onClick={this.close} className="ui orange button">Close</Link>
               <div className="or"></div>
-              <Link className='ui positive button'>Save Analysis</Link>
+              <Link to='/favorites' onClick={this.postFavorite} className='ui positive button'>Save Analysis</Link>
             </div>
           </div>
           <div className="col-md-4"></div>

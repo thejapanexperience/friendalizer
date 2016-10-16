@@ -38,7 +38,7 @@ exports.delete = function (callback, id) {
   exports.get((err, favorites) => {
     if (err) return callback(err);
 
-    const editFavorites = favorites.filter((favorite) => favorite.id !== parseInt(id));
+    const editFavorites = favorites.filter((favorite) => favorite.id !== id);
 
     if (editFavorites.length < favorites.length) {
       exports.write(callback, editFavorites);

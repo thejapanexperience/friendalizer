@@ -19,6 +19,25 @@ body {
   width:15em;
 }
 
+.favorites-img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.favorite-album {
+  height: 250px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete:hover {
+  cursor: crosshair;
+}
+
 #album {
   position: relative;
 }

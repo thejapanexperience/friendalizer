@@ -8,6 +8,7 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackConfig = require('./webpack.config');
+const printscreen = require('printscreen');
 
 const app = express();
 var server = require('http').Server(app);
@@ -32,8 +33,6 @@ app.use((req, res, next) => {
  next();
 });
 
-
-
 // WEBPACK CONFIG
 const compiler = webpack(webpackConfig);
 app.use(webpackHotMiddleware(compiler));
@@ -53,6 +52,17 @@ app.use((req, res, next) => {
 // ROUTES
 app.use('/api/search', require('./routes/searchRoutes'));
 app.use('/managefavorites', require('./routes/favoriteRoutes'));
+app.get('/screenshot', (req, res) => {
+  console.log('CAPTURE');
+  printscreen('http://localhost:8000/', {}, (err, data) => {
+    console.log(data);
+    require('fs').stat(data.file, (err, stats) =>
+      console.log(`
+        - There are divs in this page.
+        - Your screenshot is available at ${data.file} and is ${stats.size} bytes.
+      `));
+  });
+});
 
 // ALLOW REACT ROUTING
 app.use('*', (req, res) => {

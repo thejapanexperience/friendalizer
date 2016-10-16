@@ -51,8 +51,8 @@ const API = {
       });
   },
 
-  postFavorite (business) {
-    axios.post('http://localhost:8000/managefavorites', business)
+  postFavorite (favorite) {
+    axios.post('http://localhost:8000/managefavorites', favorite)
       .then((res) => {
         console.log('API POST:', res.data);
         ServerActions.updateFavorites(res.data);
