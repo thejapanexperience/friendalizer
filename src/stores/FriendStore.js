@@ -37,6 +37,10 @@ class FriendStore extends EventEmitter {
         case 'PICTURE_ANALYSIS':
           console.log('STORE PICTURE_ANALYSIS: ', action.payload.data);
           let picture = (action.payload.data)
+
+          if(!picture.length)
+            break;
+
             _totals[0][1] += Number(picture[0].scores.anger)
             console.log('_totals[0][1]:6 ',_totals[0][1] )
             _totals[0][1] += Number(picture[0].scores.contempt)

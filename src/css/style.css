@@ -46,12 +46,12 @@ body {
   flex-shrink: 0;
   min-width: 100%;
   min-height: 100%;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .favorite-album {
   height: 230px;
-  /*overflow: hidden;*/
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,9 +112,9 @@ body {
   background-color: #5bc0de;
 }*/
 
-.nav-tabs > li > a:focus {
+/*.nav-tabs > li > a:focus {
   background-color: #5bc0de;
-}
+}*/
 /*
 .btn-default {
   border: thin solid black!important;
@@ -135,7 +135,7 @@ tbody > tr > td {
     border-top: thin solid #5bc0de!important;
 }
 .nav-tabs {
-  border-bottom: thin solid #5bc0de;
+  border-bottom: thin solid black;
 }
 
 .slider-label {
@@ -168,7 +168,7 @@ tbody > tr > td {
 }
 
 hr {
-  border-color: #5bc0de;
+  border-color: black;
 }
 
 .rating {

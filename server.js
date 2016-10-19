@@ -11,6 +11,7 @@ const webpackConfig = require('./webpack.config');
 const printscreen = require('printscreen');
 var sendmail = require('sendmail')();
 
+require('dotenv').config({ silent: true });
 
 const app = express();
 var server = require('http').Server(app);

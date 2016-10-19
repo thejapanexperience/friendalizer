@@ -71,7 +71,7 @@ export default class Favorites extends Component {
                     </div>
                     <h6>Surprise</h6>
                     <div>
-                      <Progress percent={favorite.totals[5][1]/favorite.counts.pics*100} indicating color='pink'/>
+                      <Progress percent={favorite.totals[5][1]/(favorite.counts.pics ? favorite.counts.pics : 1) * 100} indicating color='pink'/>
                     </div>
                     <h6>Anger</h6>
                     <div>

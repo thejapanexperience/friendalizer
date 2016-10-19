@@ -9,7 +9,7 @@ const API = {
     axios.get('http://localhost:8000/managefavorites')
       .then((res) => {
         console.log('API INITIALIZE:', res.data);
-        ServerActions.updateFavorites(res.data);
+        ServerActions.updateFavorites(parseFavorites(res.data));
       })
       .catch((err) => {
         console.error('INITIALIZE FAVORITES:', err);
@@ -55,7 +55,7 @@ const API = {
     axios.post('http://localhost:8000/managefavorites', favorite)
       .then((res) => {
         console.log('API POST:', res.data);
-        ServerActions.updateFavorites(res.data);
+        ServerActions.updateFavorites(parseFavorites(res.data));
       })
       .catch((err) => {
         console.error('POST FAVORITE:', err);
@@ -66,7 +66,7 @@ const API = {
     axios.delete(`http://localhost:8000/managefavorites?id=${encodeURI(id)}`)
       .then((res) => {
         console.log('API DELETE:', res.data);
-        ServerActions.updateFavorites(res.data);
+        ServerActions.updateFavorites(parseFavorites(res.data));
       })
       .catch((err) => {
         console.error('DELETE FAVORITE:', err);
@@ -96,5 +96,17 @@ const API = {
     axios.get(`http://localhost:8000/search/live?term=${encodeURI(term)}&count=${count}&radius=${radius}`);
   }
 };
+
+function parseFavorites(favorites) {
+  return favorites.map(favorite => {
+    let obj = null;
+    try{
+      obj = JSON.parse(favorite.obj);
+    } catch (err) {
+      console.log('JSON PARSE FAVORITES ERROR: ', err);
+    }
+    return obj;
+  });
+}
 
 export default API;
