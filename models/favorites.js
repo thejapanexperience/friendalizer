@@ -13,7 +13,8 @@ connection.query(`CREATE TABLE IF NOT EXISTS favorites (
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 )`, (err) => {
-  if (err) throw err;
+  // if (err) throw err;
+  if (err) console.log('error');;
 });
 
 const filename = path.join(__dirname, '../data/favorites.json');
