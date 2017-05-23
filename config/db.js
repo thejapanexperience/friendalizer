@@ -1,12 +1,12 @@
 const mysql = require('mysql');
 
-// const {DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME} = process.env;
+const {DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME} = process.env;
 
 const connection = mysql.createConnection({
-  host     : 'db4free.net',
-  user     : 'batmands',
-  password : 'db4free1214',
-  database : 'richarddatabase'
+  host     : 'sql9.freemysqlhosting.net',
+  user     : 'sql9176147',
+  password : 'DjdWxS24cV',
+  database : 'sql9176147'
   // host     : DB_HOST,
   // user     : DB_USERNAME,
   // password : DB_PASSWORD,
