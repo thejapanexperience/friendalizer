@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
   console.log('SOCKET ON');
   socketEmitter = (type, data) => socket.emit(type, data);
 });
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 443;
 server.listen(PORT);
 
 app.use(function (req, res, next){
