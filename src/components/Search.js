@@ -90,9 +90,9 @@ export default class Search extends Component {
       pics.push(this.refs[`pic${index}`].value);
     });
 
-    this.state.msgs.forEach((e, index) => {
-      msgs.push(this.refs[`msg${index}`].value);
-    });
+    // this.state.msgs.forEach((e, index) => {
+    //   msgs.push(this.refs[`msg${index}`].value);
+    // });
 
     FriendActions.search(pics, msgs)
 
@@ -119,8 +119,8 @@ export default class Search extends Component {
         </div>
         <div className="row">
           <hr />
-          <div className='col-md-4'>
-            <h3>Add Pictures</h3>
+          <div className='col-md-12'>
+            <h3>Add links to pictures of your friend and click 'Analyze' to see if you should keep them!</h3>
             {pics.map((e, index) => (
               <div key={uuid()}>
                 <div className="ui fluid left action input">
@@ -133,7 +133,7 @@ export default class Search extends Component {
               </div>
             ))}
           </div>
-          <div className="col-md-8">
+          <div className="col-md-8 hide" >
             <h3>Add Messages From Target</h3>
 
             {msgs.map((e, index) => (
@@ -142,7 +142,9 @@ export default class Search extends Component {
                   <button onClick={this.addMsg} className="ui teal labled icon button">
                     <i className="plus icon"/>
                   </button>
-                  <input type="text" ref={`msg${index}`} defaultValue="Trump’s talk of a rigged election already has some of his supporters publicly saying they won’t accept the result of Clinton wins the presidential election. If she’s in office, I hope we can start a coup. She should be in prison or shot. That’s how I feel about it, Dan Bowman, a Trump supporter, told The Boston Globe last week. We’re going to have a revolution and take them out of office if that’s what it takes. There’s going to be a lot of bloodshed. But that’s what it’s going to take. . . . I would do whatever I can for my country. Trump also claimed that the Republican primary process was rigged in April, when it looked like Sen. Ted Cruz (R-Texas) could gather enough primary delegates to challenge his nomination at the Republican National Convention. The brash businessman’s chances of winning the White House are dwindling. He trails Clinton by more than 7 points nationally, according to HuffPost Pollster, which aggregates publicly available polling data. HuffPost Pollster’s presidential forecast model gives him a meager 7.9 percent chance of winning the presidency. Editor’s note: Donald Trump regularly incites political violence and is a serial liar, rampant xenophobe, racist, misogynist and birther who has repeatedly pledged to ban all Muslims — 1.6 billion members of an entire religion — from entering the U.S."/>
+                  <input type="text" ref={`msg${index}`}
+                    // defaultValue="Trump’s talk of a rigged election already has some of his supporters publicly saying they won’t accept the result of Clinton wins the presidential election. If she’s in office, I hope we can start a coup. She should be in prison or shot. That’s how I feel about it, Dan Bowman, a Trump supporter, told The Boston Globe last week. We’re going to have a revolution and take them out of office if that’s what it takes. There’s going to be a lot of bloodshed. But that’s what it’s going to take. . . . I would do whatever I can for my country. Trump also claimed that the Republican primary process was rigged in April, when it looked like Sen. Ted Cruz (R-Texas) could gather enough primary delegates to challenge his nomination at the Republican National Convention. The brash businessman’s chances of winning the White House are dwindling. He trails Clinton by more than 7 points nationally, according to HuffPost Pollster, which aggregates publicly available polling data. HuffPost Pollster’s presidential forecast model gives him a meager 7.9 percent chance of winning the presidency. Editor’s note: Donald Trump regularly incites political violence and is a serial liar, rampant xenophobe, racist, misogynist and birther who has repeatedly pledged to ban all Muslims — 1.6 billion members of an entire religion — from entering the U.S."
+                  />
                 </div>
                 <br />
               </div>

@@ -12,6 +12,10 @@ body {
   background-color: hsla(53, 100%, 26%, 0.08);
 }
 
+.hide {
+  display: none;
+}
+
 .introText {
   color: black;
   /*font-family: 'Fredericka the Great', cursive;*/
@@ -19,6 +23,15 @@ body {
   font-family: 'Sintony', sans-serif;
   font-size: 400%;
   text-align: right;
+}
+.introTextName {
+  color: black;
+  /*font-family: 'Fredericka the Great', cursive;*/
+  /*font-family: 'Bungee Inline', cursive;*/
+  font-family: 'Sintony', sans-serif;
+  font-size: 100%;
+  text-align: right;
+  color: red;
 }
 /*.ui.card>.content, .ui.cards>.card>.content {
     background-color: #fbc014;

@@ -25,11 +25,12 @@ export default class Landing extends Component {
           <h3 className='introText text-center'>Are your friends really your friends?</h3>
           <h1 className='introText text-center'>Are your friends worth keeping?</h1>
           <h1 className='introText text-center'>Scared to find out?</h1>
+          <h3 className='introTextName text-center'>Enter your friend's name and click 'Begin Analysis.'</h3>
         </div>
         <br />
         <div className="row text-right">
           <div className="ui action huge input">
-            <input type="text" ref="name" placeholder="Donald"/>
+            <input type="text" ref="name" defaultValue="Donald" required/>
             <Link id="beginAnalysis" to='/search' onClick={this.addName} className="ui red right labeled icon button">
               <i className="smile icon"></i>
               Begin Analysis

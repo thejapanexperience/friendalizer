@@ -65,6 +65,9 @@ export default class Results extends Component {
 
   render () {
     let {totals, counts, pics, name} = this.state;
+    if (!name) {
+      name = 'John/Jane Doe'
+    }
     console.log('counts:', counts);
     console.log('totals: ', totals)
     console.log('name: ', name)

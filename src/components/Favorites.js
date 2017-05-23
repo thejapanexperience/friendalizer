@@ -89,13 +89,13 @@ export default class Favorites extends Component {
                     <div>
                       <Progress percent={favorite.totals[4][1]/favorite.counts.query*100} indicating color='blue'/>
                     </div>
-                    <div className="ui action fluid input">
+                    {/* <div className="ui action fluid input">
                       <input type="text" ref={favorite.id} defaultValue="friend@email.com"/>
                       <button className="ui teal right labeled icon button" onClick={() => this.sendMail(favorite.id, favorite)}>
                         <i className="mail icon"></i>
                         Mail
                       </button>
-                    </div>
+                    </div> */}
 
                   </div>
                 </div>
