@@ -45,7 +45,8 @@ const API = {
   search (pics, msgs) {
     untilClose = pics.length + msgs.length;
 
-    axios.post(`http://localhost:8000/api/search`,{pics, msgs})
+    axios.post(`http://localhost:${PORT}/api/search`,{pics, msgs})
+    // axios.post(`http://localhost:8000/api/search`,{pics, msgs})
       .then((res) => {
         console.log('API SEARCH:', res.data);
       })
@@ -55,7 +56,8 @@ const API = {
   },
 
   postFavorite (favorite) {
-    axios.post('http://localhost:8000/managefavorites', favorite)
+    axios.post(`http://localhost:${PORT}/managefavorites`, favorite)
+    // axios.post(`http://localhost:8000/managefavorites`, favorite)
       .then((res) => {
         console.log('API POST:', res.data);
         ServerActions.updateFavorites(parseFavorites(res.data));
@@ -66,7 +68,8 @@ const API = {
   },
 
   deleteFavorite (id) {
-    axios.delete(`http://localhost:8000/managefavorites?id=${encodeURI(id)}`)
+    axios.delete(`http://localhost:${PORT}/managefavorites?id=${encodeURI(id)}`)
+    // axios.delete(`http://localhost:8000/managefavorites?id=${encodeURI(id)}`)
       .then((res) => {
         console.log('API DELETE:', res.data);
         ServerActions.updateFavorites(parseFavorites(res.data));
@@ -85,7 +88,8 @@ const API = {
   },
 
   getBusiness (id) {
-    axios.get(`http://localhost:8000/business?id=${id}`)
+    axios.get(`http://localhost:${PORT}/business?id=${id}`)
+    // axios.get(`http://localhost:8000/business?id=${id}`)
       .then((res) => {
         console.log('API BUSINESS:', res.data);
         ServerActions.recieveBusiness(res.data);
@@ -96,7 +100,8 @@ const API = {
   },
 
   startStream (term, count, radius) {
-    axios.get(`http://localhost:8000/search/live?term=${encodeURI(term)}&count=${count}&radius=${radius}`);
+    axios.get(`http://localhost:${PORT}/search/live?term=${encodeURI(term)}&count=${count}&radius=${radius}`);
+    // axios.get(`http://localhost:8000/search/live?term=${encodeURI(term)}&count=${count}&radius=${radius}`);
   }
 };
 
