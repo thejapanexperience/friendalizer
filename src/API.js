@@ -3,10 +3,12 @@ import axios from 'axios';
 const io = require('socket.io-client')
 let socket;
 let untilClose;
+const PORT = process.env.PORT || 8000;
 
 const API = {
   initializeFavorites () {
-    axios.get('http://localhost:8000/managefavorites')
+    axios.get(`http://localhost:${PORT}/managefavorites`)
+    // axios.get('http://localhost:8000/managefavorites')
       .then((res) => {
         console.log('API INITIALIZE:', res.data);
         ServerActions.updateFavorites(parseFavorites(res.data));
@@ -17,7 +19,8 @@ const API = {
   },
 
   openSocket () {
-    socket = io.connect('http://localhost:8000');
+    socket = io.connect(`http://localhost:${PORT}`);
+    // socket = io.connect('http://localhost:8000');
     socket.on('watson', function (data) {
       // console.log('WATSON:', data);
       ServerActions.receiveMsgAnalysis(data);
