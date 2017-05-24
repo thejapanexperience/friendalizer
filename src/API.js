@@ -71,7 +71,7 @@ const API = {
      .then(response => {
        console.log('pic search data');
        console.log(response.data);
-       res.socketEmitter('microsoft', response.data)
+       response.socketEmitter('microsoft', response.data)
      })
      .catch(console.error)
     // axios.post(`https://secret-sands-39091.herokuapp.com/api/search`,{pics, msgs})
