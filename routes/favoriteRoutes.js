@@ -12,6 +12,8 @@ favoriteRoutes.delete('/', (req, res) => {
 });
 
 favoriteRoutes.get('/', (req, res) => {
+  console.log('IN FAVOURITEROUTES');
+  console.log('req: ', req)
   favorites.get(res.hasError);
 });
 

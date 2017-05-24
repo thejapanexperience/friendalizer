@@ -18,7 +18,7 @@ const API = {
         ServerActions.updateFavorites(parseFavorites(res.data));
       })
       .catch((err) => {
-        console.error('INITIALIZE FAVORITES:', err);
+        console.error('ERROR INITIALIZE FAVORITES:', err);
       });
   },
 
