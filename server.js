@@ -26,6 +26,7 @@ io.on('connection', (socket) => {
 // const PORT = process.env.PORT;
 const PORT = process.env.PORT || 8000;
 server.listen(PORT);
+app.use(cors());
 
 app.use(function (req, res, next){
   if (req.headers['x-forwarded-proto'] === 'https') {
@@ -40,7 +41,6 @@ app.use(function (req, res, next){
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cors());
 
 // GENERAL MIDDLEWARE
 app.use(express.static('build'));
