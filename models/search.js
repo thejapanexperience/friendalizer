@@ -9,22 +9,22 @@ var alchemy_language = watson.alchemy_language({
 
 exports.getSearch = function (callback, req, res) {
   console.log('in Search')
-  // req.body.msgs.forEach((element) => {
-  //
-  //   let parameters = {
-  //     text: element
-  //   };
-  //
-  //   alchemy_language.emotion(parameters, function (err, response) {
-  //     if (err)
-  //       console.log('error:', err);
-  //     else {
-  //       console.log(JSON.stringify(response, null, 2))
-  //       res.socketEmitter('watson', response)
-  //
-  //     }
-  //   });
-  // });
+  req.body.msgs.forEach((element) => {
+
+    let parameters = {
+      text: element
+    };
+
+    alchemy_language.emotion(parameters, function (err, response) {
+      if (err)
+        console.log('error:', err);
+      else {
+        console.log(JSON.stringify(response, null, 2))
+        res.socketEmitter('watson', response)
+
+      }
+    });
+  });
 
   req.body.pics.forEach((element) => {
    console.log('in pic search');
