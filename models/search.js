@@ -8,22 +8,25 @@ var alchemy_language = watson.alchemy_language({
 
 
 exports.getSearch = function (callback, req, res) {
-  req.body.msgs.forEach((element) => {
 
-    let parameters = {
-      text: element
-    };
-
-    alchemy_language.emotion(parameters, function (err, response) {
-      if (err)
-        console.log('error:', err);
-      else {
-        console.log(JSON.stringify(response, null, 2))
-        res.socketEmitter('watson', response)
-
-      }
-    });
-  });
+  console.log('req.body.pics: ', req.body.pics)
+  
+  // req.body.msgs.forEach((element) => {
+  //
+  //   let parameters = {
+  //     text: element
+  //   };
+  //
+  //   alchemy_language.emotion(parameters, function (err, response) {
+  //     if (err)
+  //       console.log('error:', err);
+  //     else {
+  //       console.log(JSON.stringify(response, null, 2))
+  //       res.socketEmitter('watson', response)
+  //
+  //     }
+  //   });
+  // });
 
   req.body.pics.forEach((element) => {
    axios.post('https://api.projectoxford.ai/emotion/v1.0/recognize',

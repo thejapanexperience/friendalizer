@@ -57,31 +57,36 @@ const API = {
 
 
 
-    pics.forEach((element) => {
-      axios.post('https://api.projectoxford.ai/emotion/v1.0/recognize',
-     {
-       url: element
-     },
-     {
-       headers: {
-         'Content-Type': 'application/json',
-         'Ocp-Apim-Subscription-Key': '90319f9a0f6b41539002421041906eed'
-       }
-     })
-     .then(response => {
-       console.log('pic search data');
-       console.log(response.data);
-       response.socketEmitter('microsoft', response.data)
-     })
-     .catch(console.error)
-    // axios.post(`https://secret-sands-39091.herokuapp.com/api/search`,{pics, msgs})
-    // // axios.post(`http://localhost:${PORT}/api/search`,{pics, msgs})
-    // // axios.post(`http://localhost:8100/api/search`,{pics, msgs})
-    //   .then((res) => {
-    //     console.log('API SEARCH:', res.data);
-    //   })
-    //   .catch((err) => {
-    //     console.error('SEARCH:', err);
+    // pics.forEach((element) => {
+    //   axios.post('https://api.projectoxford.ai/emotion/v1.0/recognize',
+    //  {
+    //    url: element
+    //  },
+    //  {
+    //    headers: {
+    //      'Content-Type': 'application/json',
+    //      'Ocp-Apim-Subscription-Key': '90319f9a0f6b41539002421041906eed'
+    //    }
+    //  })
+    //  .then(response => {
+    //    console.log('pic search data');
+    //    console.log(response.data);
+    //    response.socketEmitter('microsoft', response.data)
+    //  })
+    //  .catch(console.error)
+
+
+
+
+
+    axios.post(`https://secret-sands-39091.herokuapp.com/api/search`,{pics, msgs})
+    // axios.post(`http://localhost:${PORT}/api/search`,{pics, msgs})
+    // axios.post(`http://localhost:8100/api/search`,{pics, msgs})
+      .then((res) => {
+        console.log('API SEARCH:', res.data);
+      })
+      .catch((err) => {
+        console.error('SEARCH:', err);
       });
   },
 
