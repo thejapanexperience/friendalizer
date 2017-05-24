@@ -3,7 +3,8 @@ import axios from 'axios';
 const io = require('socket.io-client')
 let socket;
 let untilClose;
-const PORT = process.env.PORT || 8009;
+const PORT = 'https://xxxx.herokuapp.com';
+// const PORT = process.env.PORT || 8009;
 // const PORT = process.env.PORT;
 
 const API = {
