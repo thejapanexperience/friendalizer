@@ -8,7 +8,7 @@ var alchemy_language = watson.alchemy_language({
 
 
 exports.getSearch = function (callback, req, res) {
-  console.log('req.body: ', req.body)
+  console.log('in Search')
   req.body.msgs.forEach((element) => {
 
     let parameters = {
