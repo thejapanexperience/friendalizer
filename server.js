@@ -17,10 +17,10 @@ const app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-io.set('transports', ['xhr-polling']);
-io.set("polling duration", 10);
 
 io.on('connection', (socket) => {
+  io.set("polling duration", 10);
+  io.set('transports', ['xhr-polling']);
   console.log('SOCKET ON');
   socketEmitter = (type, data) => socket.emit(type, data);
 });
