@@ -17,4 +17,4 @@ connection.connect();
 
 module.exports = connection;
 
-'https://xxxx.herokuapp.com'
+// 'https://xxxx.herokuapp.com'
