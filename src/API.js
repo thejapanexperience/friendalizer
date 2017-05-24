@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8000;
 
 const API = {
   initializeFavorites () {
-    axios.get(`0.0.0.0:${PORT}/managefavorites`)
+    axios.get(`https://secret-sands-39091.herokuapp.com:${PORT}/managefavorites`)
     // axios.get(`http://localhost:${PORT}/managefavorites`)
     // axios.get('http://localhost:8100/managefavorites')
       .then((res) => {
@@ -23,7 +23,7 @@ const API = {
   },
 
   openSocket () {
-    socket = io.connect(`0.0.0.0:${PORT}`);
+    socket = io.connect(`https://secret-sands-39091.herokuapp.com:${PORT}`);
     // socket = io.connect(`http://localhost:${PORT}`);
     // socket = io.connect('http://localhost:8100');
 
@@ -51,7 +51,7 @@ const API = {
   search (pics, msgs) {
     untilClose = pics.length + msgs.length;
 
-    axios.post(`0.0.0.0:${PORT}/api/search`,{pics, msgs})
+    axios.post(`https://secret-sands-39091.herokuapp.com:${PORT}/api/search`,{pics, msgs})
     // axios.post(`http://localhost:${PORT}/api/search`,{pics, msgs})
     // axios.post(`http://localhost:8100/api/search`,{pics, msgs})
       .then((res) => {
@@ -63,7 +63,7 @@ const API = {
   },
 
   postFavorite (favorite) {
-    axios.post(`0.0.0.0:${PORT}/managefavorites`, favorite)
+    axios.post(`https://secret-sands-39091.herokuapp.com:${PORT}/managefavorites`, favorite)
     // axios.post(`http://localhost:${PORT}/managefavorites`, favorite)
     // axios.post(`http://localhost:8100/managefavorites`, favorite)
       .then((res) => {
@@ -76,7 +76,7 @@ const API = {
   },
 
   deleteFavorite (id) {
-    axios.delete(`0.0.0.0:${PORT}/managefavorites?id=${encodeURI(id)}`)
+    axios.delete(`https://secret-sands-39091.herokuapp.com:${PORT}/managefavorites?id=${encodeURI(id)}`)
     // axios.delete(`http://localhost:${PORT}/managefavorites?id=${encodeURI(id)}`)
     // axios.delete(`http://localhost:8100/managefavorites?id=${encodeURI(id)}`)
       .then((res) => {
@@ -110,7 +110,7 @@ const API = {
   // },
 
   startStream (term, count, radius) {
-    axios.get(`0.0.0.0:${PORT}/search/live?term=${encodeURI(term)}&count=${count}&radius=${radius}`);
+    axios.get(`https://secret-sands-39091.herokuapp.com:${PORT}/search/live?term=${encodeURI(term)}&count=${count}&radius=${radius}`);
     // axios.get(`http://localhost:${PORT}/search/live?term=${encodeURI(term)}&count=${count}&radius=${radius}`);
     // axios.get(`http://localhost:8100/search/live?term=${encodeURI(term)}&count=${count}&radius=${radius}`);
   }
