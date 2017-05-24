@@ -27,6 +27,7 @@ exports.getSearch = function (callback, req, res) {
   });
 
   req.body.pics.forEach((element) => {
+   console.log('in pic search');
    axios.post('https://api.projectoxford.ai/emotion/v1.0/recognize',
      {
        url: element
@@ -38,6 +39,8 @@ exports.getSearch = function (callback, req, res) {
        }
      })
      .then(response => {
+       console.log('pic search data');
+       console.log(response.data);
        res.socketEmitter('microsoft', response.data)
      })
      .catch(console.error)

@@ -27,15 +27,15 @@ const API = {
     // socket = io.connect(`http://localhost:${PORT}`);
     // socket = io.connect('http://localhost:8100');
 
-    // socket.on('watson', function (data) {
-    //   // console.log('WATSON:', data);
-    //   ServerActions.receiveMsgAnalysis(data);
-    //   untilClose--;
-    //   if (untilClose < 1) {
-    //     socket.disconnect();
-    //     console.log('SOCKET CLOSED');
-    //   }
-    // });
+    socket.on('watson', function (data) {
+      // console.log('WATSON:', data);
+      ServerActions.receiveMsgAnalysis(data);
+      untilClose--;
+      if (untilClose < 1) {
+        socket.disconnect();
+        console.log('SOCKET CLOSED');
+      }
+    });
 
     socket.on('microsoft', function(data) {
       // console.log('MICROSOFT:', data);
