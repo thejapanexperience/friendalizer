@@ -8,7 +8,6 @@ var alchemy_language = watson.alchemy_language({
 
 
 exports.getSearch = function (callback, req, res) {
-  console.log('in Search')
   req.body.msgs.forEach((element) => {
 
     let parameters = {
@@ -27,7 +26,6 @@ exports.getSearch = function (callback, req, res) {
   });
 
   req.body.pics.forEach((element) => {
-   console.log('in pic search');
    axios.post('https://api.projectoxford.ai/emotion/v1.0/recognize',
      {
        url: element
