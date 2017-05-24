@@ -68,12 +68,12 @@ export default class Results extends Component {
     if (!name) {
       name = 'John/Jane Doe'
     }
-    console.log('counts:', counts);
-    console.log('totals: ', totals)
-    console.log('name: ', name)
-    console.log('totals[0][1]/counts.query*100: ', totals[0][1]/counts.query*100)
-    console.log('totals[0][1]: ', totals[0][1])
-    console.log('counts.query: ', counts.query)
+    // console.log('counts:', counts);
+    // console.log('totals: ', totals)
+    // console.log('name: ', name)
+    // console.log('totals[0][1]/counts.query*100: ', totals[0][1]/counts.query*100)
+    // console.log('totals[0][1]: ', totals[0][1])
+    // console.log('counts.query: ', counts.query)
 
     return (
       <div>

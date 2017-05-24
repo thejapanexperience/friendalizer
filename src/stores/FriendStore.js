@@ -21,15 +21,10 @@ class FriendStore extends EventEmitter {
           console.log('STORE MESSAGE_ANALYSIS', action.payload.data);
           let msg = action.payload.data
             _totals[0][1] += Number(msg.docEmotions.anger)
-            console.log('_totals[0][1]:1 ',_totals[0][1] )
             _totals[1][1] += Number(msg.docEmotions.disgust)
-            console.log('_totals[0][1]:2 ',_totals[0][1] )
             _totals[2][1] += Number(msg.docEmotions.fear)
-            console.log('_totals[0][1]:3 ',_totals[0][1] )
             _totals[3][1] += Number(msg.docEmotions.joy)
-            console.log('_totals[0][1]:4 ',_totals[0][1] )
             _totals[4][1] += Number(msg.docEmotions.sadness)
-            console.log('_totals[0][1]:5 ',_totals[0][1] )
           console.log('_totals: ', _totals)
           _queryCount++;
           this.emit('CHANGE');
@@ -42,20 +37,13 @@ class FriendStore extends EventEmitter {
             break;
 
             _totals[0][1] += Number(picture[0].scores.anger)
-            console.log('_totals[0][1]:6 ',_totals[0][1] )
             _totals[0][1] += Number(picture[0].scores.contempt)
-            console.log('_totals[0][1]:7 ',_totals[0][1] )
             _totals[1][1] += Number(picture[0].scores.disgust)
-            console.log('_totals[0][1]:8 ',_totals[0][1] )
             _totals[2][1] += Number(picture[0].scores.fear)
-            console.log('_totals[0][1]:9 ',_totals[0][1] )
             _totals[3][1] += Number(picture[0].scores.happiness)
-            console.log('_totals[0][1]:10 ',_totals[0][1] )
             // _totals.neutral += Number(picture[0].scores.neutral)
             _totals[4][1] += Number(picture[0].scores.sadness)
-            console.log('_totals[0][1]:11 ',_totals[0][1] )
             _totals[5][1] += Number(picture[0].scores.surprise)
-            console.log('_totals[0][1]:12 ',_totals[0][1] )
           console.log('_totals: ', _totals)
           _queryCount++;
           _imgCount++;
