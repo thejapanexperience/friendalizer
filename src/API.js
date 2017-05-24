@@ -50,7 +50,7 @@ const API = {
 
   search (pics, msgs) {
     untilClose = pics.length + msgs.length;
-
+    console.log('searching about to post');
     axios.post(`https://secret-sands-39091.herokuapp.com/api/search`,{pics, msgs})
     // axios.post(`http://localhost:${PORT}/api/search`,{pics, msgs})
     // axios.post(`http://localhost:8100/api/search`,{pics, msgs})
