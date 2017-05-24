@@ -82,7 +82,7 @@ const API = {
     //   })
     //   .catch((err) => {
     //     console.error('SEARCH:', err);
-    //   });
+      });
   },
 
   postFavorite (favorite) {
