@@ -16,6 +16,10 @@ var sendmail = require('sendmail')();
 const app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+
+io.set("polling duration", 10);
+
+
 io.on('connection', (socket) => {
   console.log('SOCKET ON');
   socketEmitter = (type, data) => socket.emit(type, data);
