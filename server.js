@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
   socketEmitter = (type, data) => socket.emit(type, data);
 });
 // const PORT = process.env.PORT;
-const PORT = process.env.PORT || 8100;
+const PORT = process.env.PORT || 8000;
 server.listen(PORT);
 
 app.use(function (req, res, next){

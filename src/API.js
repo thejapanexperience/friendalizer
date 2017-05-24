@@ -5,7 +5,7 @@ const io = require('socket.io-client')
 let socket;
 let untilClose;
 // const PORT = 'https://xxxx.herokuapp.com';
-const PORT = process.env.PORT || 8100;
+const PORT = process.env.PORT || 8000;
 // const PORT = process.env.PORT;
 
 const API = {
