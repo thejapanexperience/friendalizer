@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
   socketEmitter = (type, data) => socket.emit(type, data);
 });
 // const PORT = process.env.PORT;
-const PORT = process.env.PORT || 8005;
+const PORT = process.env.PORT || 8800;
 server.listen(PORT);
 
 app.use(function (req, res, next){
@@ -92,17 +92,17 @@ app.post('/mail', (req, res) => {
     console.dir(reply);
 });
 })
-app.get('/screenshot', (req, res) => {
-  console.log('CAPTURE');
-  printscreen('http://localhost:8000/', {}, (err, data) => {
-    console.log(data);
-    require('fs').stat(data.file, (err, stats) =>
-      console.log(`
-        - There are divs in this page.
-        - Your screenshot is available at ${data.file} and is ${stats.size} bytes.
-      `));
-  });
-});
+// app.get('/screenshot', (req, res) => {
+//   console.log('CAPTURE');
+//   printscreen('http://localhost:8000/', {}, (err, data) => {
+//     console.log(data);
+//     require('fs').stat(data.file, (err, stats) =>
+//       console.log(`
+//         - There are divs in this page.
+//         - Your screenshot is available at ${data.file} and is ${stats.size} bytes.
+//       `));
+//   });
+// });
 
 // ALLOW REACT ROUTING
 app.use('*', (req, res) => {
