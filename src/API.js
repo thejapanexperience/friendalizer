@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 8005;
 
 const API = {
   initializeFavorites () {
-    axios.get(`https://xxxx.herokuapp.com:${PORT}/managefavorites`)
-    // axios.get(`http://localhost:${PORT}/managefavorites`)
+    // axios.get(`https://xxxx.herokuapp.com:${PORT}/managefavorites`)
+    axios.get(`https://localhost:${PORT}/managefavorites`)
     // axios.get('http://localhost:8000/managefavorites')
       .then((res) => {
         console.log('API INITIALIZE:', res.data);
@@ -22,8 +22,8 @@ const API = {
   },
 
   openSocket () {
-    socket = io.connect(`https://xxxx.herokuapp.com`);
-    // socket = io.connect(`http://localhost:${PORT}`);
+    // socket = io.connect(`https://xxxx.herokuapp.com`);
+    socket = io.connect(`https://localhost:${PORT}`);
     // socket = io.connect('http://localhost:8000');
     socket.on('watson', function (data) {
       // console.log('WATSON:', data);
@@ -49,8 +49,8 @@ const API = {
   search (pics, msgs) {
     untilClose = pics.length + msgs.length;
 
-    axios.post(`https://xxxx.herokuapp.com:${PORT}/api/search`,{pics, msgs})
-    // axios.post(`http://localhost:${PORT}/api/search`,{pics, msgs})
+    // axios.post(`https://xxxx.herokuapp.com:${PORT}/api/search`,{pics, msgs})
+    axios.post(`https://localhost:${PORT}/api/search`,{pics, msgs})
     // axios.post(`http://localhost:8000/api/search`,{pics, msgs})
       .then((res) => {
         console.log('API SEARCH:', res.data);
@@ -61,8 +61,8 @@ const API = {
   },
 
   postFavorite (favorite) {
-    axios.post(`https://xxxx.herokuapp.com:${PORT}/managefavorites`, favorite)
-    // axios.post(`http://localhost:${PORT}/managefavorites`, favorite)
+    // axios.post(`https://xxxx.herokuapp.com:${PORT}/managefavorites`, favorite)
+    axios.post(`https://localhost:${PORT}/managefavorites`, favorite)
     // axios.post(`http://localhost:8000/managefavorites`, favorite)
       .then((res) => {
         console.log('API POST:', res.data);
@@ -74,8 +74,8 @@ const API = {
   },
 
   deleteFavorite (id) {
-    axios.delete(`https://xxxx.herokuapp.com:${PORT}/managefavorites?id=${encodeURI(id)}`)
-    // axios.delete(`http://localhost:${PORT}/managefavorites?id=${encodeURI(id)}`)
+    // axios.delete(`https://xxxx.herokuapp.com:${PORT}/managefavorites?id=${encodeURI(id)}`)
+    axios.delete(`https://localhost:${PORT}/managefavorites?id=${encodeURI(id)}`)
     // axios.delete(`http://localhost:8000/managefavorites?id=${encodeURI(id)}`)
       .then((res) => {
         console.log('API DELETE:', res.data);
@@ -95,8 +95,8 @@ const API = {
   },
 
   getBusiness (id) {
-    axios.get(`https://xxxx.herokuapp.com:${PORT}/business?id=${id}`)
-    // axios.get(`http://localhost:${PORT}/business?id=${id}`)
+    // axios.get(`https://xxxx.herokuapp.com:${PORT}/business?id=${id}`)
+    axios.get(`https://localhost:${PORT}/business?id=${id}`)
     // axios.get(`http://localhost:8000/business?id=${id}`)
       .then((res) => {
         console.log('API BUSINESS:', res.data);
@@ -108,8 +108,8 @@ const API = {
   },
 
   startStream (term, count, radius) {
-    axios.get(`https://xxxx.herokuapp.com:${PORT}/search/live?term=${encodeURI(term)}&count=${count}&radius=${radius}`);
-    // axios.get(`http://localhost:${PORT}/search/live?term=${encodeURI(term)}&count=${count}&radius=${radius}`);
+    // axios.get(`https://xxxx.herokuapp.com:${PORT}/search/live?term=${encodeURI(term)}&count=${count}&radius=${radius}`);
+    axios.get(`https://localhost:${PORT}/search/live?term=${encodeURI(term)}&count=${count}&radius=${radius}`);
     // axios.get(`http://localhost:8000/search/live?term=${encodeURI(term)}&count=${count}&radius=${radius}`);
   }
 };
